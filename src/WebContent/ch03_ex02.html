@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	div{
+		width : 50px;
+		height : 50px;
+		display : inline-block;
+	}
+	.red {background-color: red;}
+	.orange {background-color:orange ;}
+	.yellow {background-color: yellow;}
+	.green {background-color: green;}
+	.blue {background-color:blue ;}
+	.navy {background-color: navy;}
+	.purple {background-color:purple ;}
+	
+	
+</style>
+</head>
+<body>
+	<div class = "red"></div>
+	<div class = "orange"></div>
+	<div class = "yellow"></div>
+	<div class = "green"></div>
+	<div class = "blue"></div>
+	<div class = "navy"></div>
+	<div class = "purple"></div>
+	
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		let $colors = ["black", "orange" ,"yellow", "green", "navy", "purple"];
+		let $divs = $("div");
+		
+		for(let i = 0 ; i<7; i++){
+			$divs.eq(i).css("background-color",$color[i]);
+		}
+		$(".red").css("background-color","black");
+		
+	</script>
+	
+</body>
+</html>

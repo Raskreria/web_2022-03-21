@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+	#wrapper{
+		width : 50%;
+		margin : 0 auto;
+		text-align : center;
+		display : flex;
+		flex-wrap : wrap;
+	}
+	.first, .second, .third{width : 50%; height : 50px;}
+	.first{width:100%;}
+	.first{background : red;}
+	.second{background : yellow;}
+	.third{background : blue;}
+</style>
+
+</head>
+<body>
+	<div id = "wrapper">
+		<div class = "first">컨텐츠1를 불러오고 있습니다</div>
+		<div class = "second">컨텐츠2를 불러오고 있습니다</div>
+		<div class = "third">컨텐츠3를 불러오고 있습니다</div>
+	</div>
+	<!-- 각 컨텐츠를 전달해주는 서블릿이 있다고 가정하고 만들자. -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script>
+		$.ajax({
+			url : "/jquery/first",
+			type : "GET",
+			success : function(){
+				$(".first").text("컨텐츠1");
+			},
+			error: function(result){
+				if(result.status/400 == 1){
+					alert("비정상적인 호출입니다.");
+				}
+				else if(result.status/500 ==1 ){
+
+					alert("서버에 문제가 생겼습니다. 잠시후 다시 시도해주세요.");
+				}
+			}
+		});
+		
+		/* 실습 추가  */
+		$.ajax({
+			url : "/jquery/second",
+			type : "GET",
+			data : "name1=value1&name2=value2" ,
+			dataType : "text" ,
+			success : function(data){
+				$(".second").text(data);
+			},
+			error: function(){
+				alert("서버에 문제가 생겼습니다.");
+			}
+		});
+	</script>
+
+
+</body>
+</html>
